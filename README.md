@@ -20,57 +20,37 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 #### Using single condition statement
 ```swift
 if <<true or false>> {
-  // if statement
-} else if {
-  // else if statement
+} else if <<true or false>> {
 } else {
-  // else statement
 }
 ```
 ```swift
 condition
-  .if(<<true or false>>) {  
-    // if statement
-  }.elseif(<<true or false>>) {
-    // else if statement
-  }.else {
-    // else statement
-  }
+  .if(<<true or false>>) {}
+  .elseif(<<true or false>>) {}
+  .else {}
 ```
 
 #### Using multiple condition statements with chaining
 ```swift
 if <<true or false>> {
-  // 1st if statement
-} else if {
-  // 1st else if statement
+} else if <<true or false>> {
 } else {
-  // 1st else statement
 }
 
 if <<true or false>> {
-  // 2nd if statement
-} else if {
-  // 2nd else if statement
+} else if <<true or false>> {
 } else {
-  // 2nd else statement
 }
 ```
 ```swift
 condition
-  .if(<<true or false>>) {  
-    // 1st if statement
-  }.elseif(<<true or false>>) {
-    // 1st else if statement
-  }.else {
-    // 1st else statement
-  }.if(<<true or false>>) {
-    // 2nd if statement
-  }.elseif(<<true or false>>) {
-    // 2nd else if statement
-  }.else {
-    // 2nd else statement
-  }
+  .if(<<true or false>>) {}
+  .elseif(<<true or false>>) {}
+  .else {}
+  .if(<<true or false>>) {}
+  .elseif(<<true or false>>) {}
+  .else {}
 ```
 
 ### Array extension
