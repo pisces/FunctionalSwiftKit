@@ -35,6 +35,44 @@ class ConditionalTest: XCTestCase {
         
         XCTAssertEqual(2, count)
     }
+    func testElseIf() {
+        var count = 0
+        
+        condition
+            .if(false) { count += 1 }
+            .elseif(false) { count += 1 }
+            .elseif(false) { count += 1 }
+            .elseif(true) { count += 1 }
+            .elseif(false) { count += 1 }
+            .elseif(false) { count += 1 }
+            .else { count += 1 }
+        
+        XCTAssertEqual(1, count)
+        
+        count = 0
+        condition
+            .if(true) { count += 1 }
+            .elseif(true) { count += 1 }
+            .elseif(true) { count += 1 }
+            .elseif(true) { count += 1 }
+            .elseif(true) { count += 1 }
+            .elseif(true) { count += 1 }
+            .else { count += 1 }
+        
+        XCTAssertEqual(1, count)
+        
+        count = 0
+        condition
+            .if(false) { count += 1 }
+            .elseif(false) { count += 1 }
+            .elseif(false) { count += 1 }
+            .elseif(false) { count += 1 }
+            .elseif(false) { count += 1 }
+            .elseif(false) { count += 1 }
+            .else { count += 1 }
+        
+        XCTAssertEqual(1, count)
+    }
     func testIfElseElseIf() {
         var count = 0
         condition
