@@ -1,0 +1,16 @@
+PODS:
+  - FunctionalSwiftKit (0.1.0)
+
+DEPENDENCIES:
+  - FunctionalSwiftKit (from `../`)
+
+EXTERNAL SOURCES:
+  FunctionalSwiftKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FunctionalSwiftKit: 48eb143e0d1993393970ada99cada88af875590d
+
+PODFILE CHECKSUM: 3e226ebf9d181b265c9d2a9faa48ffdd3bf9038f
+
+COCOAPODS: 1.6.0.beta.2
