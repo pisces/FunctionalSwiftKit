@@ -19,6 +19,13 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 #### Using single condition statement
 ```swift
+if <<true or false>> {
+  // if statement
+} else {
+  // else statement
+}
+```
+```swift
 condition
   .can(<<true or false>>) {  
     // write to code for if statement
@@ -28,6 +35,19 @@ condition
 ```
 
 #### Using multiple condition statements
+```swift
+if <<true or false>> {
+  // first if statement
+
+  if <<true or false>> {
+    // second if statement
+  } else {
+    // second else statement
+  }
+} else {
+  // first else statement
+}
+```
 ```swift
 condition
   .can(<<true or false>>) {  
@@ -44,6 +64,19 @@ condition
 ```
 
 #### Using multiple condition statements each
+```swift
+if <<true or false>> {
+  // first if statement
+} else {
+  // first else statement
+}
+
+if <<true or false>> {
+  // second if statement
+} else {
+  // second else statement
+}
+```
 ```swift
 condition
   .can(<<true or false>>) {  
