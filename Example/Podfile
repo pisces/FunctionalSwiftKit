@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'FunctionalSwiftKit_Example' do
+  pod 'FunctionalSwiftKit', :path => '../'
+
+  target 'FunctionalSwiftKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
