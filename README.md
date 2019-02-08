@@ -11,7 +11,56 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Using
 
+### Condition
+ * You can use this instead of condition statement according to functional programming paradigm.
+ * Ensures thread safety.
+ * It is simple.
+ * Global variable.
+
+#### Using single condition statement
+```swift
+condition
+  .can(<<true or false>>) {  
+    // write to code for if statement
+  }.not {
+    // write to code for else statement
+  }
+```
+
+#### Using multiple condition statements
+```swift
+condition
+  .can(<<true or false>>) {  
+    // write to code for first if statement
+  }
+  .not {
+    // write to code for first else statement
+  }
+  .also(<<true or false>>) {
+    // write to code for second if statement
+  }.not {
+    // write to code for second else statement
+  }
+```
+
+#### Using multiple condition statements each
+```swift
+condition
+  .can(<<true or false>>) {  
+    // write to code for new if statement
+  }
+  .not {
+    // write to code for new if statement
+  }
+  .can(<<true or false>>) {
+    // write to code for new else statement
+  }.not {
+    // write to code for new else statement
+  }
+```
+
 ### Array extension
+ * Here are some frequently used functions with array.
 
 ```swift
 // Sample struct
@@ -53,7 +102,6 @@ let source = [Model(uid: "A"), Model(uid: "A"), Model(uid: "B"), Model(uid: "B")
 let uniqued = source.uniqued()
 // print -> [Model(uid: "A"), Model(uid: "B"), Model(uid: "C")]
 ```
-```
 
 ### Optional extension
  * You can use unwrap of Optional instead of map when you don't need return element.
@@ -64,57 +112,6 @@ import FunctionalSwiftKit
 func testUnwrap() {
     let string: String? = "string"
     string.unwrap { <<your function for execution>>($0) }
-}
-```
-
-### Conditional
- * You can use this instead of condition statement according to functional programming paradigm.
- * Ensures thread safety.
-
-#### Using single condition statement
-```swift
-condition(<<true or false>>) {  
-  // write to code for if statement
-}.not {
-  // write to code for else statement
-}
-```
-
-#### Using multiple condition statements
-```swift
-condition(<<true or false>>) {  
-  // write to code for first if statement
-}
-.not {
-  // write to code for first if statement
-}
-.also {
-  <<true or false>>
-}
-.run {
-  // write to code for second if statement
-}
-.not {
-  // write to code for second if statement
-}
-```
-
-#### Using multiple condition statements each
-```swift
-condition(<<true or false>>) {  
-  // write to code for first if statement
-}
-.not {
-  // write to code for first if statement
-}
-.can {
-  <<true or false>>
-}
-.run {
-  // write to code for second if statement
-}
-.not {
-  // write to code for second if statement
 }
 ```
 

@@ -18,9 +18,7 @@ class ConditionalTest: XCTestCase {
         let isValid = true
         var isTrue = false
         
-        Conditional(isValid) {
-            isTrue = true
-        }
+        Conditional(isValid) { isTrue = true }
         
         XCTAssertTrue(isTrue)
     }
@@ -29,10 +27,7 @@ class ConditionalTest: XCTestCase {
         var isTrue = false
         
         Conditional()
-            .can { isValid }
-            .run {
-                isTrue = true
-        }
+            .can(isValid) { isTrue = true }
         
         XCTAssertTrue(isTrue)
     }
@@ -40,13 +35,20 @@ class ConditionalTest: XCTestCase {
         let isValid = false
         var isFalse = false
         
-        Conditional()
-            .can { isValid }
-            .also { true }
-            .not {
-                isFalse = true
-        }
+        Conditional(isValid)
+            .also(isValid) {}
+            .not { isFalse = true }
         
         XCTAssertTrue(isFalse)
+    }
+    func testVariable() {
+        let isValid = true
+        var isTrue = false
+        
+        condition
+            .can(isValid) { isTrue = true }
+            .not {}
+        
+        XCTAssertTrue(isTrue)
     }
 }

@@ -42,11 +42,13 @@ public struct Conditional {
         execution.unwrap { run($0) }
     }
     
-    public func also(_ filter: () -> Bool) -> Conditional {
-        return Conditional(isValid && filter())
+    @discardableResult
+    public func also(_ isValid: Bool, _ execution: Execution? = nil) -> Conditional {
+        return Conditional(self.isValid && isValid, execution)
     }
-    public func can(_ filter: () -> Bool) -> Conditional {
-        return Conditional(filter())
+    @discardableResult
+    public func can(_ isValid: Bool, _ execution: Execution? = nil) -> Conditional {
+        return Conditional(isValid, execution)
     }
     @discardableResult
     public func run(_ execution: Execution) -> Conditional {
@@ -60,6 +62,6 @@ public struct Conditional {
     }
 }
 
-public func condition(_ isValid: Bool = true, execution: Conditional.Execution? = nil) -> Conditional {
-    return Conditional(isValid, execution)
+public var condition: Conditional {
+    return Conditional()
 }
