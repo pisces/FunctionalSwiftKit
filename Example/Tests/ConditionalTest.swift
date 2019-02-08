@@ -11,44 +11,79 @@ import XCTest
 @testable import FunctionalSwiftKit
 class ConditionalTest: XCTestCase {
     
-    override func setUp() {
-    }
-    
-    func testInit() {
-        let isValid = true
-        var isTrue = false
-        
-        Conditional(isValid) { isTrue = true }
-        
-        XCTAssertTrue(isTrue)
-    }
-    func testCan() {
-        let isValid = true
-        var isTrue = false
-        
-        Conditional()
-            .can(isValid) { isTrue = true }
-        
-        XCTAssertTrue(isTrue)
-    }
-    func testAlso() {
-        let isValid = false
-        var isFalse = false
-        
-        Conditional(isValid)
-            .also(isValid) {}
-            .not { isFalse = true }
-        
-        XCTAssertTrue(isFalse)
-    }
-    func testVariable() {
-        let isValid = true
-        var isTrue = false
+    func testIf() {
+        var count = 0
         
         condition
-            .can(isValid) { isTrue = true }
-            .not {}
+            .if(true) { count += 1 }
+            .if(false) { count += 1 }
+            .if(true) { count += 1 }
+            .if(false) { count += 1 }
         
-        XCTAssertTrue(isTrue)
+        XCTAssertEqual(2, count)
+    }
+    func testIfElse() {
+        var count = 0
+        
+        condition
+            .if(true) { count += 1 }
+            .else {}
+        
+        condition
+            .if(false) { }
+            .else { count += 1 }
+        
+        XCTAssertEqual(2, count)
+    }
+    func testIfElseElseIf() {
+        var count = 0
+        condition
+            .if(true) { count += 1 }
+            .elseif(true) { count += 1 }
+            .else { count += 1 }
+        
+        XCTAssertEqual(1, count)
+        
+        count = 0
+        condition
+            .if(false) { count += 1 }
+            .elseif(true) { count += 1 }
+            .else { count += 1 }
+        
+        XCTAssertEqual(1, count)
+        
+        count = 0
+        condition
+            .if(false) { count += 1 }
+            .elseif(false) { count += 1 }
+            .else { count += 1 }
+        
+        XCTAssertEqual(1, count)
+    }
+    func testChain() {
+        var count = 0
+        condition
+            .if(true) { count += 1 }
+            .elseif(true) { count += 1 }
+            .else { count += 1 }
+            .if(false) { count += 1 }
+            .elseif(true) { count += 1 }
+            .else { count += 1 }
+            .if(false) { count += 1 }
+            .elseif(false) { count += 1 }
+            .else { count += 1 }
+        
+        XCTAssertEqual(3, count)
+        
+        count = 0
+        condition
+            .if(true) { count += 1 }
+            .else { count += 1 }
+            .if(true) { count += 1 }
+            .else { count += 1 }
+            .if(true) { count += 1 }
+            .else { count += 1 }
+        
+        XCTAssertEqual(3, count)
     }
 }
