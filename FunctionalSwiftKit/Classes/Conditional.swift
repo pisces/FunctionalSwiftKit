@@ -32,36 +32,40 @@
 
 import Foundation
 
-public struct Conditional {
+public enum Conditional {
+    case none
+    case some
+    
     public typealias Execution = () -> Void
-    public let isValid: Bool
     
-    @discardableResult
-    public init(_ isValid: Bool = true, _ execution: Execution? = nil) {
-        self.isValid = isValid
-        execution.unwrap { run($0) }
+    public init(_ isValid: Bool) {
+        self = isValid ? .some : .none
     }
     
     @discardableResult
-    public func also(_ isValid: Bool, _ execution: Execution? = nil) -> Conditional {
-        return Conditional(self.isValid && isValid, execution)
+    public func `if`(_ isValid: Bool, _ execution: Execution) -> Conditional {
+        let con = Conditional(isValid)
+        if con == .some {
+            execution()
+        }
+        return con
     }
     @discardableResult
-    public func can(_ isValid: Bool, _ execution: Execution? = nil) -> Conditional {
-        return Conditional(isValid, execution)
+    public func `else`(_ execution: Execution) -> Conditional {
+        if self == .none {
+            execution()
+        }
+        return .none
     }
     @discardableResult
-    public func run(_ execution: Execution) -> Conditional {
-        if isValid { execution() }
-        return Conditional(isValid)
-    }
-    @discardableResult
-    public func not(_ execution: Execution) -> Conditional {
-        if !isValid { execution() }
-        return Conditional(isValid)
+    public func elseif(_ isValid: Bool, _ execution: Execution) -> Conditional {
+        if self == .none && isValid {
+            execution()
+        }
+        return self == .none && !isValid ? .none : .some
     }
 }
 
 public var condition: Conditional {
-    return Conditional()
+    return Conditional(true)
 }

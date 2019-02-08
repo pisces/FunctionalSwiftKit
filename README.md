@@ -21,74 +21,55 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ```swift
 if <<true or false>> {
   // if statement
+} else if {
+  // else if statement
 } else {
   // else statement
 }
 ```
 ```swift
 condition
-  .can(<<true or false>>) {  
-    // write to code for if statement
-  }.not {
-    // write to code for else statement
+  .if(<<true or false>>) {  
+    // if statement
+  }.elseif(<<true or false>>) {
+    // else if statement
+  }.else {
+    // else statement
   }
 ```
 
-#### Using multiple condition statements
+#### Using multiple condition statements with chaining
 ```swift
 if <<true or false>> {
-  // first if statement
-
-  if <<true or false>> {
-    // second if statement
-  } else {
-    // second else statement
-  }
+  // 1st if statement
+} else if {
+  // 1st else if statement
 } else {
-  // first else statement
+  // 1st else statement
+}
+
+if <<true or false>> {
+  // 2nd if statement
+} else if {
+  // 2nd else if statement
+} else {
+  // 2nd else statement
 }
 ```
 ```swift
 condition
-  .can(<<true or false>>) {  
-    // write to code for first if statement
-  }
-  .not {
-    // write to code for first else statement
-  }
-  .also(<<true or false>>) {
-    // write to code for second if statement
-  }.not {
-    // write to code for second else statement
-  }
-```
-
-#### Using multiple condition statements each
-```swift
-if <<true or false>> {
-  // first if statement
-} else {
-  // first else statement
-}
-
-if <<true or false>> {
-  // second if statement
-} else {
-  // second else statement
-}
-```
-```swift
-condition
-  .can(<<true or false>>) {  
-    // write to code for new if statement
-  }
-  .not {
-    // write to code for new if statement
-  }
-  .can(<<true or false>>) {
-    // write to code for new else statement
-  }.not {
-    // write to code for new else statement
+  .if(<<true or false>>) {  
+    // 1st if statement
+  }.elseif(<<true or false>>) {
+    // 1st else if statement
+  }.else {
+    // 1st else statement
+  }.if(<<true or false>>) {
+    // 2nd if statement
+  }.elseif(<<true or false>>) {
+    // 2nd else if statement
+  }.else {
+    // 2nd else statement
   }
 ```
 
