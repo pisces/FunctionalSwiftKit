@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'FunctionalSwiftKit'
-    s.version          = '0.1.0'
+    s.version          = '0.1.1'
     s.summary          = 'This kit help you can write code as functional programming.'
     s.description      = 'This kit help you can write code as functional programming.'
     s.homepage         = 'https://github.com/pisces/FunctionalSwiftKit'
