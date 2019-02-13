@@ -33,7 +33,15 @@
 import Foundation
 
 extension Optional {
-    public func unwrap<U>(_ execution: (Wrapped) throws -> U) {
-        _ = map { try? execution($0) }
+    public func empty(_ execution: () -> Void) {
+        var value: Wrapped?
+        _ = map { value = $0 }
+        
+        if value == nil {
+            execution()
+        }
+    }
+    public func unwrap(_ execution: (Wrapped) -> Void) {
+        _ = map { execution($0) }
     }
 }
