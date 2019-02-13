@@ -10,10 +10,6 @@ import XCTest
 
 @testable import FunctionalSwiftKit
 class OptionalTest: XCTestCase {
-    
-    override func setUp() {
-    }
-    
     func testUnwrap() {
         let string: String? = "string"
         
@@ -21,5 +17,15 @@ class OptionalTest: XCTestCase {
             XCTAssertNotNil($0)
             XCTAssertEqual("string", $0)
         }
+    }
+    func testEmpty() {
+        var isTrue = false
+        let string: String? = nil
+        
+        string
+            .map { $0 }
+            .empty { isTrue = true }
+        
+        XCTAssertTrue(isTrue)
     }
 }

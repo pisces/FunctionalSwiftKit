@@ -11,9 +11,6 @@ import XCTest
 @testable import FunctionalSwiftKit
 class ArrayTest: XCTestCase {
     
-    override func setUp() {
-    }
-    
     func testGroupedForStrings() {
         let source = ["A", "A", "B", "C"]
         let grouped = source.grouped { $0 }
