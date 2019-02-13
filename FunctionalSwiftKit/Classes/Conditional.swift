@@ -66,6 +66,6 @@ public enum Conditional {
     }
 }
 
-public var condition: Conditional {
-    return Conditional(true)
+public func _if(_ isValid: Bool, _ execution: Conditional.Execution) -> Conditional {
+    return Conditional(true).if(isValid, execution)
 }

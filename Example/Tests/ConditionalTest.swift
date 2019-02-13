@@ -14,8 +14,7 @@ class ConditionalTest: XCTestCase {
     func testIf() {
         var count = 0
         
-        condition
-            .if(true) { count += 1 }
+        _if(true) { count += 1 }
             .if(false) { count += 1 }
             .if(true) { count += 1 }
             .if(false) { count += 1 }
@@ -25,12 +24,10 @@ class ConditionalTest: XCTestCase {
     func testIfElse() {
         var count = 0
         
-        condition
-            .if(true) { count += 1 }
+        _if(true) { count += 1 }
             .else {}
         
-        condition
-            .if(false) { }
+        _if(false) { }
             .else { count += 1 }
         
         XCTAssertEqual(2, count)
@@ -38,8 +35,7 @@ class ConditionalTest: XCTestCase {
     func testElseIf() {
         var count = 0
         
-        condition
-            .if(false) { count += 1 }
+        _if(false) { count += 1 }
             .elseif(false) { count += 1 }
             .elseif(false) { count += 1 }
             .elseif(true) { count += 1 }
@@ -50,8 +46,7 @@ class ConditionalTest: XCTestCase {
         XCTAssertEqual(1, count)
         
         count = 0
-        condition
-            .if(true) { count += 1 }
+        _if(true) { count += 1 }
             .elseif(true) { count += 1 }
             .elseif(true) { count += 1 }
             .elseif(true) { count += 1 }
@@ -62,8 +57,7 @@ class ConditionalTest: XCTestCase {
         XCTAssertEqual(1, count)
         
         count = 0
-        condition
-            .if(false) { count += 1 }
+        _if(false) { count += 1 }
             .elseif(false) { count += 1 }
             .elseif(false) { count += 1 }
             .elseif(false) { count += 1 }
@@ -75,24 +69,21 @@ class ConditionalTest: XCTestCase {
     }
     func testIfElseElseIf() {
         var count = 0
-        condition
-            .if(true) { count += 1 }
+        _if(true) { count += 1 }
             .elseif(true) { count += 1 }
             .else { count += 1 }
         
         XCTAssertEqual(1, count)
         
         count = 0
-        condition
-            .if(false) { count += 1 }
+        _if(false) { count += 1 }
             .elseif(true) { count += 1 }
             .else { count += 1 }
         
         XCTAssertEqual(1, count)
         
         count = 0
-        condition
-            .if(false) { count += 1 }
+        _if(false) { count += 1 }
             .elseif(false) { count += 1 }
             .else { count += 1 }
         
@@ -100,8 +91,7 @@ class ConditionalTest: XCTestCase {
     }
     func testChain() {
         var count = 0
-        condition
-            .if(true) { count += 1 }
+        _if(true) { count += 1 }
             .elseif(true) { count += 1 }
             .else { count += 1 }
             .if(false) { count += 1 }
@@ -114,8 +104,7 @@ class ConditionalTest: XCTestCase {
         XCTAssertEqual(3, count)
         
         count = 0
-        condition
-            .if(true) { count += 1 }
+        _if(true) { count += 1 }
             .else { count += 1 }
             .if(true) { count += 1 }
             .else { count += 1 }
