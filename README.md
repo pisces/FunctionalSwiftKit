@@ -25,8 +25,7 @@ if <<true or false>> {
 }
 ```
 ```swift
-condition
-  .if(<<true or false>>) {}
+  _if(<<true or false>>) {}
   .elseif(<<true or false>>) {}
   .else {}
 ```
@@ -44,8 +43,7 @@ if <<true or false>> {
 }
 ```
 ```swift
-condition
-  .if(<<true or false>>) {}
+  _if(<<true or false>>) {}
   .elseif(<<true or false>>) {}
   .else {}
   .if(<<true or false>>) {}
@@ -106,6 +104,12 @@ import FunctionalSwiftKit
 func testUnwrap() {
     let string: String? = "string"
     string.unwrap { <<your function for execution>>($0) }
+}
+func testEmpty() {
+    let string: String? = "string"
+    string
+      .map { print($0) }
+      .empty { print("empty") }
 }
 ```
 
