@@ -66,6 +66,7 @@ public enum Conditional {
     }
 }
 
+@discardableResult
 public func _if(_ isValid: Bool, _ execution: Conditional.Execution) -> Conditional {
     return Conditional(true).if(isValid, execution)
 }
